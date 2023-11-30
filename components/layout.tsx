@@ -86,6 +86,7 @@ interface LayoutProps {
   canGoBack: boolean;
   menu: boolean;
   children: React.ReactNode;
+  detail?: boolean;
 }
 
 export default function Layout({
@@ -93,6 +94,7 @@ export default function Layout({
   children,
   canGoBack,
   menu,
+  detail,
 }: LayoutProps) {
   const router = useRouter();
   const onClick = () => {
@@ -105,12 +107,21 @@ export default function Layout({
       </Head>
       {menu ? (
         <>
-          <Header>
-            <div>{title}</div>
-          </Header>
+          {canGoBack ? (
+            <Header>
+              <div>{title}</div>
+            </Header>
+          ) : (
+            <Header>
+              <div>{title}</div>
+            </Header>
+          )}
           <BodyWrap>{children}</BodyWrap>
           <Footer>
-            <FooterIcon href="/">
+            <FooterIcon
+              href="/"
+              style={router.pathname === "/" ? { color: "#FD8D40" } : {}}
+            >
               <svg
                 fill="none"
                 stroke="currentColor"
@@ -126,7 +137,12 @@ export default function Layout({
               </svg>
               <span>홈</span>
             </FooterIcon>
-            <FooterIcon href="/community">
+            <FooterIcon
+              href="/community"
+              style={
+                router.pathname === "/community" ? { color: "#FD8D40" } : {}
+              }
+            >
               <svg
                 fill="none"
                 stroke="currentColor"
@@ -142,7 +158,10 @@ export default function Layout({
               </svg>
               <span>동네생활</span>
             </FooterIcon>
-            <FooterIcon href="/chats">
+            <FooterIcon
+              href="/chats"
+              style={router.pathname === "/chats" ? { color: "#FD8D40" } : {}}
+            >
               <svg
                 className="h-6 w-6"
                 fill="none"
@@ -159,7 +178,10 @@ export default function Layout({
               </svg>
               <span>채팅</span>
             </FooterIcon>
-            <FooterIcon href="/profile">
+            <FooterIcon
+              href="/profile"
+              style={router.pathname === "/profile" ? { color: "#FD8D40" } : {}}
+            >
               <svg
                 fill="none"
                 stroke="currentColor"

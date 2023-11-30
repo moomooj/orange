@@ -67,7 +67,7 @@ const EnterLink = styled(Link)`
 
 const Welcome: NextPage = () => {
   return (
-    <Layout title="welcome" menu={false} canGoBack={false}>
+    <Layout title="로그인" menu={false} canGoBack={false}>
       <TextWrap>
         <Logo src={logo} alt="logo" />
         <h2>오렌지마켓으로 중고거래 시작하기</h2>
